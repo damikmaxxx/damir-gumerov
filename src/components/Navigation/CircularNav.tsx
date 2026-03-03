@@ -1,0 +1,87 @@
+'use client';
+
+import { motion, useMotionValue, useTransform } from 'framer-motion';
+import Link from 'next/link';
+import { Home, User, Briefcase, Gamepad2 } from 'lucide-react';
+import styles from './CircularNav.module.scss';
+import { useEffect } from 'react';
+import { useLang } from '@/context/LanguageContext';
+import { NavIconProps, NavIconsProps, NavItem } from './CircularNav.types';
+
+export const navItems: NavItem[] = [
+    { path: '/', icon: Home, labelKey: 'home' },
+    { path: '/about', icon: User, labelKey: 'about' },
+    { path: '/projects', icon: Briefcase, labelKey: 'projects' },
+    { path: '/play', icon: Gamepad2, labelKey: 'play' },
+];
+
+export const CIRCLE_ANGLES = [45 - 22.5, 90 - 22.5, 135 - 22.5, 180 - 22.5].map(a => a - 90);
+
+export default function NavIcons({ mode, activePath, rotation }: NavIconsProps) {
+    return (
+        <div className={`${styles.navContainer} ${styles[mode]}`}>
+            {navItems.map((item, i) => (
+                <NavIcon
+                    key={item.path}
+                    item={item}
+                    index={i}
+                    isActive={activePath === item.path}
+                    mode={mode}
+                    rotation={rotation}
+                />
+            ))}
+        </div>
+    );
+}
+//NavIconProps
+function NavIcon({ item, index, isActive, mode, rotation }: any) {
+    const { t } = useLang();
+    const Icon = item.icon;
+    const modeValue = useMotionValue(mode);
+    const currentRadius = useTransform(rotation, [0, 360], [0, 320]);
+
+    useEffect(() => {
+        modeValue.set(mode);
+    }, [mode, modeValue]);
+
+    const finalX = useTransform([rotation, modeValue, currentRadius], ([r, m, rad]) => {
+        if (m === 'circle') {
+            const angleRad = (CIRCLE_ANGLES[index] + (r as number)) * (Math.PI / 180);
+            return (rad as number) * Math.cos(angleRad);
+        }
+        return 0;
+    });
+
+    const finalY = useTransform([rotation, modeValue, currentRadius], ([r, m, rad]) => {
+        if (m === 'circle') {
+            const angleRad = (CIRCLE_ANGLES[index] + (r as number)) * (Math.PI / 180);
+            return (rad as number) * Math.sin(angleRad);
+        }
+        return 0;
+    });
+
+    return (
+        <Link href={item.path} scroll={false}>
+            <motion.div
+                layoutId={`nav-item-${item.path}`}
+                layout="position"
+                className={`${styles.iconWrapper} ${isActive ? styles.active : ''} ${styles[mode]}`}
+                style={{ x: finalX, y: finalY }}
+                animate={{ scale: mode === 'sidebar' && isActive ? 1.1 : 1 }}
+                transition={{
+                    type: "spring",
+                    stiffness: 300,
+                    damping: 30,
+                    layout: { type: "spring", stiffness: 300, damping: 30 }
+                }}
+            >
+                <Icon size={mode === 'circle' ? 30 : 26} strokeWidth={isActive ? 2 : 1.5} />
+
+                {isActive && mode === 'sidebar' && (
+                    <motion.div layoutId="active-dot" className={styles.activeDot} />
+                )}
+                <span className={styles.tooltip}>{t(`nav.${item.labelKey}`)}</span>
+            </motion.div>
+        </Link>
+    );
+}

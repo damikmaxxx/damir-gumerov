@@ -1,0 +1,198 @@
+@use "../styles/utils" as *;
+
+.heroContainer {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.linesContainer {
+  position: absolute;
+  width: 1200px;
+  max-width: 90%;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  bottom: 0;
+  height: 100vh;
+}
+
+.line {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 1px;
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.centerStage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  min-height: 100vh;
+}
+
+.circleSvg {
+  position: absolute;
+  width: rem(500);
+  height: rem(500);
+  pointer-events: none;
+
+  circle {
+    fill: none;
+    stroke: var(--grid-color);
+    stroke-width: 1;
+    stroke-dasharray: 5 5;
+  }
+}
+
+.iconContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1400px;
+  height: 1400px;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  -webkit-mask-image: radial-gradient(
+    circle 240px at center,
+    transparent 100%,
+    black 100%
+  );
+  mask-image: radial-gradient(
+    circle 240px at center,
+    transparent 100%,
+    black 100%
+  );
+}
+
+.iconCircle {
+  position: absolute;
+  width: rem(74);
+  height: rem(74);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.6);
+  pointer-events: auto;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+}
+
+.activeItem {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: white;
+}
+.heroTitle {
+  font-family: var(--font-playfair);
+
+  font-size: clamp(rem(48), 8vw, rem(75)); 
+  line-height: 0.85;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin: 0;
+  color: var(--text-primary);
+  text-align: center;
+  letter-spacing: -0.02em;
+}
+.activeDot {
+  position: absolute;
+  bottom: 8px;
+  width: 4px;
+  height: 4px;
+  background: white;
+  border-radius: 50%;
+}
+
+.heroText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.rolePlaque {
+  display: inline-flex;
+  align-items: center;
+  gap: rem(12);
+  margin-top: rem(24);
+  margin-bottom: rem(24);
+  padding: rem(8) rem(20);
+
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: rem(100); 
+
+  font-family: var(--font-mono);
+  font-size: rem(13);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+
+  width: rem(240); 
+  overflow: hidden; 
+  white-space: nowrap;
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 15%,
+    black 85%,
+    transparent
+  ); 
+}
+.marqueeTrack {
+  display: flex;
+  gap: rem(12);
+  animation: marquee 15s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  } 
+}
+.roleItem {
+  display: flex;
+  align-items: center;
+  gap: rem(12);
+}
+
+.sparkleIcon {
+  color: var(--accent); 
+  filter: drop-shadow(0 0 5px var(--accent));
+  opacity: 0.8;
+}
+
+.heroSubtitle {
+  font-family: var(--font-mono);
+  font-size: rem(16);
+  opacity: 0.4;
+  font-style: italic; 
+}

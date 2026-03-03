@@ -1,0 +1,9 @@
+@use "@/styles/utils" as *;
+
+.tag {
+  font-family: var(--font-mono);
+  margin-bottom: rem(32); // 2rem
+  font-size: rem(24); // 1.5rem
+  color: var(--accent);
+  opacity: 0.6;
+}

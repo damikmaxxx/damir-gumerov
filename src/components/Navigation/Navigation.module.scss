@@ -1,0 +1,81 @@
+@use "@/styles/utils" as *;
+
+.dockWrapper {
+  position: fixed;
+  top: rem(15); 
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap:10px;
+}
+
+.dock {
+  display: flex;
+  align-items: center;
+  gap: rem(12);
+  padding: rem(5);
+  background: rgba(20, 20, 20, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: rem(28);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.navItem {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  width: rem(64); 
+  height: rem(64); 
+  border-radius: rem(20);
+  
+  transition: background 0.3s ease;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.05);
+    .icon {
+      color: var(--text-primary);
+    }
+  }
+
+  @include mobile {
+    width: rem(50);
+    height: rem(50);
+    border-radius: rem(14);
+  }
+}
+
+.icon {
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+  
+  svg {
+    width: rem(28);
+    height: rem(28);
+    
+    @media (max-width: 600px) {
+      width: rem(22);
+      height: rem(22);
+    }
+  }
+}
+
+.activeIcon {
+  color: var(--text-primary);
+}
+
+.dot {
+  position: absolute;
+  bottom: rem(8); 
+  width: rem(6); 
+  height: rem(6); 
+  border-radius: 50%;
+  background-color: var(--text-primary);
+}

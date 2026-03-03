@@ -1,0 +1,44 @@
+@use "sass:math";
+
+$base-font-size: 16;
+
+$mobile: 768px;
+$tablet: 1024px;
+$desktop: 1200px;
+
+
+@mixin tablet {
+  @media (max-width: #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: #{$mobile}) {
+    @content;
+  }
+}
+
+
+@function rem($px) {
+
+  $value: math.div($px, ($px * 0 + 1));
+
+  @return math.div($value, 16) * 1rem;
+}
+
+@mixin fluid-text($min-px, $max-px, $min-width: 320, $max-width: 1200) {
+  $min-rem: rem($min-px);
+  $max-rem: rem($max-px);
+  
+
+  $slope: math.div($max-px - $min-px, $max-width - $min-width);
+  
+  $y-axis-intersection: -$min-width * $slope + $min-px;
+  
+  font-size: clamp(
+    #{$min-rem}, 
+    #{math.div($y-axis-intersection, 16)}rem + #{$slope * 100}vw, 
+    #{$max-rem}
+  );
+}

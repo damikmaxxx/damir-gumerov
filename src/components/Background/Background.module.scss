@@ -1,0 +1,34 @@
+@use "@/styles/utils" as *;
+
+.wrapper {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  background-color: #000;
+}
+
+.imageContainer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  will-change: transform, filter, opacity;
+}
+
+.bgImage {
+  object-fit: cover;
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: radial-gradient(
+    circle at center,
+    transparent 10%,
+    rgba(5, 5, 5, 0.4) 50%,
+    #050505 95%
+  );
+}

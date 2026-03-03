@@ -1,0 +1,112 @@
+@use "@/styles/utils" as *;
+.wrapper {
+  max-width: rem(1200);
+  margin: 0 auto;
+  padding: rem(100) rem(20);
+  min-height: 100vh;
+}
+.sectionTitle {
+  @include fluid-text(24, 32);
+  font-weight: 600;
+  margin-bottom: rem(40);
+  color: var(--text-primary);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: rem(20);
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: rem(24);
+  padding: rem(32);
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: rem(280);
+
+  &.large {
+    grid-column: span 2;
+    @media (max-width: 768px) {
+      grid-column: span 1;
+    }
+  }
+
+  &:hover {
+    border-color: rgba(251, 134, 39, 0.4);
+    .glow {
+      opacity: 1;
+    }
+    .icon {
+      transform: translate(2px, -2px);
+      opacity: 1;
+    }
+  }
+}
+
+.cardHeader {
+  position: absolute;
+  top: rem(32);
+  left: rem(32);
+  right: rem(32);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.tags {
+  display: flex;
+  gap: rem(8);
+  span {
+    font-size: rem(12);
+    padding: rem(4) rem(10);
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: rem(
+      99
+    );
+    color: var(--text-secondary);
+  }
+}
+.icon {
+  color: #fb8627;
+  opacity: 0.5;
+  transition: all 0.3s ease;
+  svg {
+    width: rem(24);
+    height: rem(24);
+  }
+}
+
+.title {
+  @include fluid-text(20, 24);
+  margin-bottom: rem(8);
+  font-family: var(--font-playfair);
+}
+
+.description {
+  font-size: rem(16);
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+.glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at top right,
+    rgba(251, 134, 39, 0.1),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}

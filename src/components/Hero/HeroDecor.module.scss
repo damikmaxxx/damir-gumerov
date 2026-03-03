@@ -1,0 +1,119 @@
+@use "@/styles/utils" as *;
+
+.decorWrapper {
+  position: fixed;
+  inset: 0;
+  padding: rem(40);
+  pointer-events: none; 
+  z-index: 5;
+  font-family: var(--font-mono);
+  font-size: rem(12);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+}
+
+.item {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: rem(12);
+  z-index: 50;
+  pointer-events: auto;
+}
+
+.topLeft { top: rem(40); left: rem(40); }
+.bottomLeft { bottom: rem(40); left: rem(40); }
+.bottomRight { bottom: rem(40); right: rem(40); }
+
+.topRight { 
+  top: rem(40); 
+  right: rem(40); 
+  gap: rem(16);
+}
+
+.langLabel {
+  font-family: var(--font-mono);
+  font-size: rem(10);
+  color: var(--text-primary);
+  opacity: 0.6;
+  letter-spacing: 0.15em;
+  display: flex;
+  align-items: center;
+  gap: rem(6);
+
+  .labelPrefix {
+    color: var(--accent);
+    font-weight: 700;
+    text-shadow: 0 0 5px var(--accent);
+  }
+}
+
+.langSwitcher {
+  display: flex;
+  gap: rem(6);
+}
+
+.langBtn {
+  position: relative;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  color: rgba(255, 255, 255, 0.5);
+  font-family: var(--font-mono);
+  font-size: rem(12);
+  font-weight: 600;
+  padding: rem(6) rem(14);
+  border-radius: rem(4);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-transform: uppercase;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+
+  &.active {
+    background: rgba(163, 230, 53, 0.15);
+    border-color: var(--accent);
+    color: var(--accent);
+    box-shadow: 0 0 15px rgba(163, 230, 53, 0.3);
+  }
+}
+
+.langDot {
+  position: absolute;
+  bottom: rem(4);
+  left: 50%;
+  transform: translateX(-50%);
+  width: rem(3);
+  height: rem(3);
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 5px var(--accent);
+}
+
+.accent {
+  color: var(--text-secondary);
+  font-weight: 700;
+}
+
+.separator {
+  opacity: 0.3;
+}
+
+.statusDot {
+  width: rem(6);
+  height: rem(6);
+  background-color: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--accent);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
