@@ -1,9 +1,9 @@
 import './globals.scss';
-import { Metadata } from 'next';
+import { Metadata, Viewport } from 'next';
 import { Playfair_Display, JetBrains_Mono } from 'next/font/google';
 import ClientLayout from '@/components/Layout/ClientLayout';
 import { Analytics } from '@vercel/analytics/next';
-
+import { SpeedInsights } from "@vercel/speed-insights/next"
 const playfair = Playfair_Display({
   subsets: ['latin', 'cyrillic'],
   variable: '--font-playfair'
@@ -18,15 +18,15 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL
 export const metadata: Metadata = {
   title: "Damir Gumerov | Frontend Developer",
   description: "Portfolio of Damir Gumerov, building performant web applications.",
-  
+
   openGraph: {
     title: "Damir Gumerov | Frontend Developer",
     description: "Portfolio of Damir Gumerov, building performant web applications.",
-    url: SITE_URL, 
+    url: SITE_URL,
     siteName: "Damir Gumerov Portfolio",
     images: [
       {
-        url: "/images/og-preview.png", 
+        url: "/images/og-preview.png",
         width: 1200,
         height: 630,
         alt: "Damir Gumerov Portfolio Preview",
@@ -44,6 +44,7 @@ export const metadata: Metadata = {
   },
 };
 
+
 export default function RootLayout({
   children,
 }: {
@@ -56,6 +57,7 @@ export default function RootLayout({
           {children}
         </ClientLayout>
         <Analytics />
+        <SpeedInsights/>
       </body>
     </html>
   );

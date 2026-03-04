@@ -9,7 +9,9 @@
 html {
   font-size: 100%;
 }
-
+* {
+  box-sizing: border-box; // Теперь width: 100% будет включать в себя паддинги
+}
 body {
   margin: 0;
   padding: 0;
@@ -46,9 +48,7 @@ body {
   justify-content: center;
   position: relative;
   z-index: 2;
-
 }
-
 
 .bg-image {
   object-fit: cover;
@@ -74,6 +74,6 @@ body {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   &:hover {
-    background: var(--accent); 
+    background: var(--accent);
   }
 }
