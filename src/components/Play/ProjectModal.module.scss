@@ -17,7 +17,6 @@
   @include mobile {
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
-    // Делаем фон чуть чернее (0.9 вместо 0.85), чтобы компенсировать прозрачность
     background: rgba(0, 0, 0, 0.9);
     padding: 0;
   }
@@ -108,12 +107,12 @@
   }
   @include mobile {
     position: fixed;
-    top: rem(16); // Чуть больше отступ для удобства пальца
+    top: rem(16);
     right: rem(16);
     z-index: 100;
     background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: none; // 🔥 УБИРАЕМ блюр у кнопки на мобилке
-    border: 1px solid rgba(255, 255, 255, 0.2); // Добавляем четкий бордер вместо блюра
+    backdrop-filter: none; 
+    border: 1px solid rgba(255, 255, 255, 0.2);
   }
 }
 

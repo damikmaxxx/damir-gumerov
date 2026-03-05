@@ -1,12 +1,13 @@
 'use client';
 
-import { motion} from 'framer-motion';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import styles from './page.module.scss';
 import { useLang } from '@/context/LanguageContext';
 import WorksSlider from '@/components/Works/WorksSlider';
 import TagTitle from '@/components/UI/tagTitle/TagTitle';
 import { ProjectItem } from './types';
+import AutoScanImage from '@/components/Works/AutoScanImage';
 
 export default function ProjectsPage() {
   const { t } = useLang();
@@ -37,18 +38,24 @@ export default function ProjectsPage() {
                 <span /><span /><span />
               </div>
               <div className={styles.imageContainer}>
-                {project.images && project.images.length > 0 ? (
-                  <WorksSlider images={project.images} />
-                ) : (
-                  <Image
+                {index === 0 ? (
+                  <AutoScanImage
                     src={project.image}
                     alt={project.title}
-                    fill
-                    priority={index === 0}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
-                    className={styles.projectImage}
                   />
-                )}
+                ) :
+                  project.images && project.images.length > 0 ? (
+                    <WorksSlider images={project.images} />
+                  ) : (
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      priority={false}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
+                      className={styles.projectImage}
+                    />
+                  )}
               </div>
             </div>
 

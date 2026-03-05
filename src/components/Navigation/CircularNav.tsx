@@ -33,7 +33,6 @@ export default function NavIcons({ mode, activePath, rotation }: NavIconsProps) 
         </div>
     );
 }
-//NavIconProps
 function NavIcon({ item, index, isActive, mode, rotation }: any) {
     const { t } = useLang();
     const Icon = item.icon;
@@ -61,7 +60,7 @@ function NavIcon({ item, index, isActive, mode, rotation }: any) {
     });
 
     return (
-        <Link href={item.path} scroll={false}>
+        <Link href={item.path}>
             <motion.div
                 layoutId={`nav-item-${item.path}`}
                 layout="position"
