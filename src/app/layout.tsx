@@ -1,5 +1,5 @@
 import './globals.scss';
-import { Metadata, Viewport } from 'next';
+import { Metadata} from 'next';
 import { Playfair_Display, JetBrains_Mono } from 'next/font/google';
 import ClientLayout from '@/components/Layout/ClientLayout';
 import { Analytics } from '@vercel/analytics/next';

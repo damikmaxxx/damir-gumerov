@@ -1,6 +1,6 @@
 'use client';
 
-import { Mail, Github, Send, Linkedin, Instagram } from 'lucide-react';
+import { Mail, Github, Send} from 'lucide-react';
 import { useLang } from '@/context/LanguageContext';
 import styles from './Footer.module.scss';
 

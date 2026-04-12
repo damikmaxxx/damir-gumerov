@@ -5,9 +5,9 @@ import Image from 'next/image';
 import styles from './page.module.scss';
 import { useLang } from '@/context/LanguageContext';
 import WorksSlider from '@/components/Works/WorksSlider';
-import TagTitle from '@/components/UI/tagTitle/TagTitle';
-import { ProjectItem } from './types';
+import TagTitle from '@/components/UI/TagTitle/TagTitle';
 import AutoScanImage from '@/components/Works/AutoScanImage';
+import { ProjectItem } from './types';
 
 export default function ProjectsPage() {
   const { t } = useLang();
@@ -24,7 +24,7 @@ export default function ProjectsPage() {
           </h1>
         </header>
 
-        {Array.isArray(projectList) && projectList.map((project: ProjectItem, index: number) => (
+        {Array.isArray(projectList) && projectList.map((project: ProjectItem) => (
           <motion.section
             key={project.id}
             className={styles.projectItem}
@@ -37,31 +37,32 @@ export default function ProjectsPage() {
               <div className={styles.browserDecor}>
                 <span /><span /><span />
               </div>
-              <div className={styles.imageContainer}>
-                {index === 0 ? (
-                  <AutoScanImage
+
+              {project.autoScan && project.image ? (
+                <AutoScanImage
+                  src={project.image}
+                  alt={project.title}
+                />
+              ) : project.images && project.images.length > 0 ? (
+                <WorksSlider images={project.images} />
+              ) : project.image ? (
+                <div className={styles.imageContainer}>
+                  <Image
                     src={project.image}
                     alt={project.title}
+                    fill
+                    priority={false}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
+                    className={styles.projectImage}
                   />
-                ) :
-                  project.images && project.images.length > 0 ? (
-                    <WorksSlider images={project.images} />
-                  ) : (
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      priority={false}
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
-                      className={styles.projectImage}
-                    />
-                  )}
-              </div>
+                </div>
+              ) : null}
+
             </div>
 
             <div className={styles.infoSide}>
               <div className={styles.header}>
-                <span className={styles.number}>// {project.id}</span>
+                <span className={styles.number}>{'// '}{project.id}</span>
                 <h2 className={styles.title}>{project.title}</h2>
                 <span className={styles.category}>{project.category}</span>
               </div>

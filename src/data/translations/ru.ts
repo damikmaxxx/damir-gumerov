@@ -51,10 +51,15 @@ export const ru: typeof en = {
             { label: 'Качество', items: ['Jest', 'React Testing Library', 'ESLint / Prettier', 'Agile / Scrum'] },
         ],
         experience: [
-            { role: 'Frontend разработчик', company: '@ Фриланс / Частная практика', date: 'Авг 2025 — Наст. время' },
-            { role: 'Стажер Frontend разработчик', company: '@ Технологии АРМ', date: 'Июнь 2024 — Авг 2024' },
-            { role: 'Стажер Frontend разработчик', company: '@ ICL Techno', date: 'Июнь 2023 — Авг 2023' },
-            { role: 'Верстальщик', company: '@ Удаленно', date: 'Июнь 2021 — Фев 2023' }
+            {
+                role: 'Стажёр Frontend-разработчик',
+                company: '@ 500na700',
+                date: 'Март 2026 — Апрель 2026',
+            },
+            { role: 'Frontend разработчик', company: '@ Фриланс / Частная практика', date: 'Август 2025 — Январь 2026' },
+            { role: 'Стажер Frontend разработчик', company: '@ Технологии АРМ', date: 'Июнь 2024 — Август 2024' },
+            { role: 'Стажер Frontend разработчик', company: '@ ICL Techno', date: 'Июнь 2023 — Август 2023' },
+            { role: 'Верстальщик', company: '@ Удаленно', date: 'Июнь 2021 — Февраль 2023' }
         ],
         education: [
             {
@@ -87,14 +92,29 @@ export const ru: typeof en = {
         list: [
             {
                 id: '01',
+                title: '500na700',
+                category: 'Next.js / WordPress Production',
+                description: 'Разработка интерфейсов для коммерческих многостраничных сайтов в продакшн-среде. Основной фокус — создание адаптивных страниц на Next.js и React, перенос контента и структуры сайтов, интеграция с REST API, а также доработка WordPress-тем и кастомных блоков. Участвовал в улучшении качества релизов: оптимизировал производительность, работал над SEO-параметрами и взаимодействовал с дизайнером и backend-разработчиком.',
+                tech: ['Next.js', 'React', 'TypeScript', 'REST API', 'WordPress', 'Figma', 'Git'],
+                image: '/projects/KAZAN_KREMLIN_D.png',
+                images: [
+                    '/projects/KAZAN_KREMLIN_D.png',
+                    '/projects/KAZAN_KREMLIN_M.png',
+                    '/projects/BUGULMA_D.png',
+                    '/projects/BUGULMA_M.png',
+                ],
+            },
+            {
+                id: '02',
                 title: 'ICL Techno',
                 category: 'Enterprise Frontend',
                 description: 'Проектирование и разработка интерфейсных модулей для систем автоматизации. Основной фокус на создании отказоустойчивых компонентов, типизации бизнес-логики и бесшовной интеграции с бэкенд-сервисами. Работа в кросс-функциональной команде по методологии Scrum.',
                 tech: ['Vue.js', 'TypeScript', 'Pinia', 'Axios', 'REST API', 'Git', 'Agile / Scrum'],
                 image: '/projects/ICL.jpg',
+                autoScan: true,
             },
             {
-                id: '02',
+                id: '03',
                 title: 'Технологии АРМ',
                 category: 'Разработка и Тестирование',
                 description: 'Разработка UI-компонентов и автоматизация контроля качества. Внедрение модульного тестирования для критических узлов приложения и работа над производительностью сборки. Оптимизация взаимодействия пользователя с интерфейсом через Element Plus.',
@@ -102,7 +122,7 @@ export const ru: typeof en = {
                 image: '/projects/ARM_TEXNO.png',
             },
             {
-                id: '03',
+                id: '04',
                 title: 'Фриланс практика',
                 category: 'Full Cycle Frontend',
                 description: 'Реализация современных SPA и лендингов от этапа анализа макета до деплоя. Перевод проектов на современный стек (React/Next.js), внедрение сложных анимаций и обеспечение высокого уровня доступности и SEO-оптимизации.',

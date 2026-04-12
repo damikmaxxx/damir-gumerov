@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useRef} from 'react';
 import { useMotionValue, useSpring, useTransform } from 'framer-motion';
 
 interface UseImagePanProps {

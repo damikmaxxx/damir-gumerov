@@ -1,13 +1,14 @@
 'use client';
 
-import { useEffect, useState, ReactNode } from 'react';
+import { useEffect, ReactNode, useSyncExternalStore } from 'react';
 import { createPortal } from 'react-dom';
 
+const emptySubscribe = () => () => { };
+
 export default function Portal({ children }: { children: ReactNode }) {
-  const [mounted, setMounted] = useState(false);
+  const mounted = useSyncExternalStore(emptySubscribe, () => true, () => false);
 
   useEffect(() => {
-    setMounted(true);
     document.body.style.overflow = 'hidden';
     return () => {
       document.body.style.overflow = 'unset';

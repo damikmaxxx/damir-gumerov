@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import styles from './page.module.scss';
 import { Mail, Github, Send, Phone, LucideIcon } from 'lucide-react';
 import { useLang } from '@/context/LanguageContext';
-import TagTitle from '@/components/UI/tagTitle/TagTitle';
+import TagTitle from '@/components/UI/TagTitle/TagTitle';
 
 import { 
   PersonalDataItem, 

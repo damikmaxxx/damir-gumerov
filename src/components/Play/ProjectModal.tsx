@@ -6,10 +6,16 @@ import Image from 'next/image';
 import styles from './ProjectModal.module.scss';
 import Portal from '../UI/Portal/Portal';
 import { useIsMobile } from '@/hooks/useIsMobile';
+import { PlayItem } from '@/app/play/types';
 
-export default function ProjectModal({ item, onClose }: any) {
-  if (!item) return null;
+interface ProjectModalProps {
+  item: PlayItem | null | undefined;
+  onClose: () => void;
+}
+
+export default function ProjectModal({ item, onClose }: ProjectModalProps) {
   const isMobile = useIsMobile();
+  if (!item) return null;
   const contentVariants: Variants = {
     hidden: { opacity: 0, x: 20 },
     visible: {
@@ -29,9 +35,6 @@ export default function ProjectModal({ item, onClose }: any) {
     visible: { opacity: 1, y: 0 }
   };
 
-  const transitionConfig = isMobile
-    ? { duration: 0.3, ease: "easeOut" }
-    : { type: "spring", stiffness: 300, damping: 30 };
 
   return (
     <Portal>

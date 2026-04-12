@@ -4,6 +4,7 @@ export interface ProjectItem {
   category: string;
   description: string;
   tech: string[];
-  image: string;
+  image?: string;
   images?: string[];
+  autoScan?: boolean;
 }

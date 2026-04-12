@@ -1,10 +1,9 @@
 'use client';
 
-import { motion, useMotionValue, useTransform } from 'framer-motion';
+import { motion, useTransform } from 'framer-motion';
 import Link from 'next/link';
 import { Home, User, Briefcase, Gamepad2 } from 'lucide-react';
 import styles from './CircularNav.module.scss';
-import { useEffect } from 'react';
 import { useLang } from '@/context/LanguageContext';
 import { NavIconProps, NavIconsProps, NavItem } from './CircularNav.types';
 
@@ -33,29 +32,25 @@ export default function NavIcons({ mode, activePath, rotation }: NavIconsProps) 
         </div>
     );
 }
-function NavIcon({ item, index, isActive, mode, rotation }: any) {
+function NavIcon({ item, index, isActive, mode, rotation }: NavIconProps) {
     const { t } = useLang();
     const Icon = item.icon;
-    const modeValue = useMotionValue(mode);
-    const currentRadius = useTransform(rotation, [0, 360], [0, 320]);
 
-    useEffect(() => {
-        modeValue.set(mode);
-    }, [mode, modeValue]);
-
-    const finalX = useTransform([rotation, modeValue, currentRadius], ([r, m, rad]) => {
-        if (m === 'circle') {
-            const angleRad = (CIRCLE_ANGLES[index] + (r as number)) * (Math.PI / 180);
-            return (rad as number) * Math.cos(angleRad);
+    const finalX = useTransform(rotation, (r) => {
+        if (mode === 'circle') {
+            const angleRad = (CIRCLE_ANGLES[index] + r) * (Math.PI / 180);
+            return 320 * Math.cos(angleRad);
         }
+
         return 0;
     });
 
-    const finalY = useTransform([rotation, modeValue, currentRadius], ([r, m, rad]) => {
-        if (m === 'circle') {
-            const angleRad = (CIRCLE_ANGLES[index] + (r as number)) * (Math.PI / 180);
-            return (rad as number) * Math.sin(angleRad);
+    const finalY = useTransform(rotation, (r) => {
+        if (mode === 'circle') {
+            const angleRad = (CIRCLE_ANGLES[index] + r) * (Math.PI / 180);
+            return 320 * Math.sin(angleRad);
         }
+
         return 0;
     });
 

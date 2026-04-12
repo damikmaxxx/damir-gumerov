@@ -1,10 +1,13 @@
 import { LucideIcon} from 'lucide-react';
 import { MotionValue } from 'framer-motion';
+import { en } from '@/data/translations/en';
+
+type NavLabelKey = keyof typeof en.nav;
 
 export interface NavItem {
     path: string;
     icon: LucideIcon;
-    labelKey: string;
+    labelKey: NavLabelKey;
 }
 
 export interface NavIconsProps {

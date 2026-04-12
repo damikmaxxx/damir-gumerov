@@ -49,10 +49,15 @@ export const en = {
             { label: 'Quality & Process', items: ['Jest', 'React Testing Library', 'ESLint / Prettier', 'Agile / Scrum'] },
         ],
         experience: [
-            { role: 'Frontend Developer', company: '@ Freelance / Private Practice', date: 'Aug 2025 — Present' },
-            { role: 'Frontend Developer Intern', company: '@ Techno ARM', date: 'June 2024 — Aug 2024' },
-            { role: 'Frontend Developer Intern', company: '@ ICL Techno', date: 'June 2023 — Aug 2023' },
-            { role: 'Layout Designer', company: '@ Remote', date: 'June 2021 — Feb 2023' }
+            {
+                role: 'Frontend Developer Intern',
+                company: '@ 500na700',
+                date: 'March 2026 — April 2026',
+            },
+            { role: 'Frontend Developer', company: '@ Freelance / Private Practice', date: 'August 2025 — January 2026' },
+            { role: 'Frontend Developer Intern', company: '@ Techno ARM', date: 'June 2024 — August 2024' },
+            { role: 'Frontend Developer Intern', company: '@ ICL Techno', date: 'June 2023 — August 2023' },
+            { role: 'Layout Designer', company: '@ Remote', date: 'June 2021 — February 2023' }
         ],
         education: [
             {
@@ -85,14 +90,29 @@ export const en = {
         list: [
             {
                 id: '01',
+                title: '500na700',
+                category: 'Next.js / WordPress Production',
+                description: 'Developed frontend interfaces for commercial multi-page websites in a production environment. Main focus was on building responsive pages using Next.js and React, migrating and structuring website content, integrating REST APIs, and customizing WordPress themes and blocks. Contributed to improving release quality by optimizing performance, enhancing SEO aspects, and closely collaborating with designers and backend developers.',
+                tech: ['Next.js', 'React', 'TypeScript', 'REST API', 'WordPress', 'Figma', 'Git'],
+                image: '/projects/KAZAN_KREMLIN_D.png',
+                images: [
+                    '/projects/KAZAN_KREMLIN_D.png',
+                    '/projects/KAZAN_KREMLIN_M.png',
+                    '/projects/BUGULMA_D.png',
+                    '/projects/BUGULMA_M.png',
+                ],
+            },
+            {
+                id: '02',
                 title: 'ICL Techno',
                 category: 'Enterprise Frontend',
                 description: 'Design and development of interface modules for automation systems. Main focus on creating resilient components, business logic typing, and seamless integration with backend services. Worked in a cross-functional team using Scrum methodology.',
                 tech: ['Vue.js', 'TypeScript', 'Pinia', 'Axios', 'REST API', 'Git', 'Agile / Scrum'],
                 image: '/projects/ICL.jpg',
+                autoScan: true,
             },
             {
-                id: '02',
+                id: '03',
                 title: 'ARM Technologies',
                 category: 'Interface Engineering & QA',
                 description: 'Development of UI components and quality control automation. Implementation of unit testing for critical application nodes and working on build performance. Optimization of user interaction with the interface via Element Plus.',
@@ -100,7 +120,7 @@ export const en = {
                 image: '/projects/ARM_TEXNO.png',
             },
             {
-                id: '03',
+                id: '04',
                 title: 'Freelance Practice',
                 category: 'Full Cycle Frontend',
                 description: 'Implementation of modern SPAs and landing pages from the layout analysis stage to deployment. Migration of projects to a modern stack (React/Next.js), implementation of complex animations, and ensuring high levels of accessibility and SEO optimization.',

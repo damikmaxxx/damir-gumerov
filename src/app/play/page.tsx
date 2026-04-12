@@ -6,7 +6,7 @@ import Image from 'next/image';
 import styles from './page.module.scss';
 import ProjectModal from '@/components/Play/ProjectModal';
 import { useLang } from '@/context/LanguageContext';
-import TagTitle from '@/components/UI/tagTitle/TagTitle';
+import TagTitle from '@/components/UI/TagTitle/TagTitle';
 
 import { PlayItem } from './types';
 
