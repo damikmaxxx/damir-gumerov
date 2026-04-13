@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useTransform } from 'framer-motion';
+import { motion, useTransform } from 'framer-motion'; 
 import Link from 'next/link';
 import { Home, User, Briefcase, Gamepad2 } from 'lucide-react';
 import styles from './CircularNav.module.scss';
@@ -32,27 +32,27 @@ export default function NavIcons({ mode, activePath, rotation }: NavIconsProps) 
         </div>
     );
 }
+
 function NavIcon({ item, index, isActive, mode, rotation }: NavIconProps) {
     const { t } = useLang();
     const Icon = item.icon;
 
-    const finalX = useTransform(rotation, (r) => {
-        if (mode === 'circle') {
-            const angleRad = (CIRCLE_ANGLES[index] + r) * (Math.PI / 180);
-            return 320 * Math.cos(angleRad);
-        }
+    const currentRadius = useTransform(rotation, [0, 360], [0, 320]);
 
-        return 0;
+    const finalX = useTransform(rotation, (r: number) => {
+        if (mode !== 'circle') return 0;
+
+        const angleRad = (CIRCLE_ANGLES[index] + r) * (Math.PI / 180);
+        return currentRadius.get() * Math.cos(angleRad);
     });
 
-    const finalY = useTransform(rotation, (r) => {
-        if (mode === 'circle') {
-            const angleRad = (CIRCLE_ANGLES[index] + r) * (Math.PI / 180);
-            return 320 * Math.sin(angleRad);
-        }
+    const finalY = useTransform(rotation, (r: number) => {
+        if (mode !== 'circle') return 0;
 
-        return 0;
+        const angleRad = (CIRCLE_ANGLES[index] + r) * (Math.PI / 180);
+        return currentRadius.get() * Math.sin(angleRad);
     });
+
 
     return (
         <Link href={item.path}>
@@ -70,7 +70,6 @@ function NavIcon({ item, index, isActive, mode, rotation }: NavIconProps) {
                 }}
             >
                 <Icon size={mode === 'circle' ? 30 : 26} strokeWidth={isActive ? 2 : 1.5} />
-
                 {isActive && mode === 'sidebar' && (
                     <motion.div layoutId="active-dot" className={styles.activeDot} />
                 )}

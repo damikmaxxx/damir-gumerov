@@ -9,7 +9,7 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'w.wallhaven.cc', // ДОБАВИЛИ ЭТОТ ДОМЕН
+        hostname: 'w.wallhaven.cc',
         pathname: '**',
       },
     ],

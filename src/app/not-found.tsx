@@ -11,7 +11,7 @@ export default function NotFound() {
   return (
     <div className={styles.wrapper}>
       <div className={styles.content}>
-        {/* Гигантский номер с анимацией моргания */}
+
         <motion.h1 
           className={styles.errorCode}
           animate={{ 
